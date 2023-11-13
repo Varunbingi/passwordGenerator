@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body class="bg-slate-700 text-white">
+    <div class="grid justify-center content-center h-[100vh] border-white">
+        <div class="grid grid-cols-1 gap-5" >
+            <h1 class="text-center text-3xl">Password Generator</h1>
+            <input type="text" id="passwordGenerated" placeholder="Click On Generate Button" class="text-black">
+            <div class="grid grid-cols-2 gap-10">
+                <button id="generate" class="bg-purple-500">Generate</button>
+                <button id="copy" class="bg-purple-500">Copy To Clipboard</button>
+            </div>
+            <div class="grid grid-cols-2 gap-5">
+                <p>Password length</p>
+                <input type="number" id="passwordLength" class="text-black" >
+                <p>Include Uppercase Letters</p>
+                <input type="checkbox" id="uppercase"  class="justify-self-end w-5">
+                <p>Include Lowercase Letters</p>
+                <input type="checkbox" id="lowercase"  class="justify-self-end w-5">
+                <p>Include numbers</p>
+                <input type="checkbox" id="numbers"  class="justify-self-end w-5">
+                <p>Include Symbols</p>
+                <input type="checkbox" name="" id="symbols"  class="justify-self-end w-5">
+            </div>
+        </div>
+    </div>
+    <script>
+        const generate=document.getElementById("generate");
+        const copy=document.getElementById("copy");
+        generate.addEventListener('click',function(){
+            var passwordLength=document.getElementById('passwordLength').value;
+            var uppercase=document.getElementById('uppercase').checked;
+            var lowercase=document.getElementById('lowercase').checked;
+            var number=document.getElementById('numbers').checked;
+            var symbols=document.getElementById('symbols').checked;
+            var x='';
+            if(uppercase==true && lowercase==true && number==true && symbols==true){
+                var all='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&!*<>?+=/_-'
+                for(var i=0;i<passwordLength;i++){
+                    
+                    x=x+all[Math.floor(Math.random()*all.length)];
+                    
+                }
+                document.getElementById('passwordGenerated').value=x;
+                
+            }
+            else if(uppercase==true && lowercase==true && number==true){
+                var upperLowerNumber='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+                for(var i=0;i<passwordLength;i++){
+                    
+                    x=x+upperLowerNumber[Math.floor(Math.random()*upperLowerNumber.length)];
+                    
+                }
+                document.getElementById('passwordGenerated').value=x;
+        
+            }
+            else if(lowercase==true && number==true && symbols==true){
+                var lowerNumberSymbol='abcdefghijklmnopqrstuvwxyz0123456789@#$%^&!*<>?+=/_-'
+                for(var i=0;i<passwordLength;i++){
+                    
+                    x=x+lowerNumberSymbol[Math.floor(Math.random()*lowerNumberSymbol.length)];
+                    
+                }
+                document.getElementById('passwordGenerated').value=x;
+        
+            }
+            else if(uppercase==true && lowercase==true && symbols==true){
+                var upperLowerSymbol='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz@#$%^&!*<>?+=/_-'
+                for(var i=0;i<passwordLength;i++){
+                    
+                    x=x+upperLowerSymbol[Math.floor(Math.random()*upperLowerSymbol.length)];
+                    
+                }
+                document.getElementById('passwordGenerated').value=x;
+            
+            }
+            else if(uppercase==true && number==true && symbols==true){
+                var upperNumberSymbol='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&!*<>?+=/_-'
+                for(var i=0;i<passwordLength;i++){
+                    
+                    x=x+upperNumberSymbol[Math.floor(Math.random()*upperNumberSymbol.length)];
+                    
+                }
+                document.getElementById('passwordGenerated').value=x;
+            
+            }
+            else if(uppercase==true && lowercase==true){
+                var upperlower='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+                for(var i=0;i<passwordLength;i++){
+                    
+                    x=x+upperlower[Math.floor(Math.random()*upperlower.length)];
+                    
+                }
+                document.getElementById('passwordGenerated').value=x;
+                
+
+            }else if(uppercase==true && number==true){
+                var upperNumber='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+                for(var i=0;i<passwordLength;i++){
+                    
+                    x=x+upperNumber[Math.floor(Math.random()*upperNumber.length)];
+                    
+                }
+                document.getElementById('passwordGenerated').value=x;
+                
+
+            }else if(uppercase==true && symbols==true){
+                var upperSymbol='ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%^&!*<>?+=/_-';
+                for(var i=0;i<passwordLength;i++){
+                    
+                    x=x+upperSymbol[Math.floor(Math.random()*upperSymbol.length)];
+                    
+                }
+                document.getElementById('passwordGenerated').value=x;
+        
+
+            }else if(lowercase==true && number==true){
+                var lowerNumber='abcdefghijklmnopqrstuvwxyz0123456789'
+                for(var i=0;i<passwordLength;i++){
+                    x=x+lowerNumber[Math.floor(Math.random()*lowerNumber.length)];
+                }
+                document.getElementById('passwordGenerated').value=x;
+            }
+            else if(lowercase==true && symbols==true){
+                var lowerSymbol='abcdefghijklmnopqrstuvwxyz@#$%^&!*<>?+=/_-'
+                for(var i=0;i<passwordLength;i++){
+                    
+                    x=x+lowerSymbol[Math.floor(Math.random()*lowerSymbol.length)];
+                    
+                }
+                document.getElementById('passwordGenerated').value=x;
+                
+
+            }
+            else if(number==true && symbols==true){
+                var numbersSymbols='1234567890@#$%^&!*<>?+=/_-'
+                for(var i=0;i<passwordLength;i++){
+                    
+                    x=x+numbersSymbols[Math.floor(Math.random()*numbersSymbols.length)];
+                    
+                }
+                document.getElementById('passwordGenerated').value=x;
+                
+            }
+            else if(uppercase==true){
+                var uppercaseArray='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                for(var i=0;i<passwordLength;i++){
+                    
+                    x=x+uppercaseArray[Math.floor(Math.random()*uppercaseArray.length)];
+                    
+                }
+                document.getElementById('passwordGenerated').value=x;
+                
+            }
+            else if(lowercase==true){
+                var lowercaseArray='abcdefghijklmnopqrstuvwxyz';
+                for(var i=0;i<passwordLength;i++){
+                    
+                    x=x+lowercaseArray[Math.floor(Math.random()*lowercaseArray.length)];
+                    
+                }
+                document.getElementById('passwordGenerated').value=x;
+            
+            }
+            else if(number==true){
+                var numberArray='1234567890'
+                for(var i=0;i<passwordLength;i++){
+                    
+                    x=x+numberArray[Math.floor(Math.random()*10)];
+                    
+                }
+                document.getElementById('passwordGenerated').value=x;
+                
+            }
+            else if(symbols==true){
+                var symbolsArray='@#$%^&!*<>?+=/_-';
+                for(var i=0;i<passwordLength;i++){
+                    
+                    x=x+symbolsArray[Math.floor(Math.random()*symbolsArray.length)];
+                    
+                }
+                document.getElementById('passwordGenerated').value=x;
+
+
+            }
+            
+        })
+        copy.addEventListener('click',function(){
+            var copyData=document.getElementById('passwordGenerated');
+            copyData.select();
+            document.execCommand("copy");
+
+        })
+    </script>
+</body>
+</html>
